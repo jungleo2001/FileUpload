@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A Nova Aliada — Hub de IA e Liderança Feminina</title>
+  <meta name="description" content="A Nova Aliada: conceito, obra e ecossistema. Livro, Comunidade, Movimento, Humans e Bitrix24. Diagnóstico, método A.L.I.A.D.A., protocolo, FAQ e sobre a autora.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --hotpink:#ff2e93;
+      --black:#0b0b0b;
+      --ink:#f2f2f2;
+      --muted:#bdbdbd;
+      --card:#ffffff;
+      --card-ink:#0f0f0f;
+      --radius:18px;
+      --shadow:0 12px 36px rgba(0,0,0,.28);
+      --container:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--black);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65;scroll-behavior:smooth}
+    img{max-width:100%;display:block}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--container);margin:0 auto;padding:0 24px}
+
+    header.nav{position:sticky;top:0;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.06);z-index:20}
+    .nav-inner{display:flex;align-items:center;justify-content:center;gap:22px;padding:14px 0;font-weight:800}
+    .nav-inner a{color:#eaeaea;opacity:.95}
+    .nav-inner a:hover{color:#fff;text-shadow:0 0 18px rgba(255,46,147,.45)}
+
+    .hero{position:relative;min-height:92vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+    .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.35) contrast(1.05) saturate(1.2)}
+    .hero .overlay{position:absolute;inset:0;background:radial-gradient(1200px 640px at 60% 35%,rgba(255,46,147,.28),transparent 60%)}
+    .hero .content{position:relative;z-index:2;padding:110px 0 80px}
+    .hero h1{font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(38px,7vw,84px);line-height:1.05;margin:0 0 12px}
+    .hero p{max-width:820px;margin:0 auto 22px;color:var(--muted);font-size:1.12rem}
+    .btn{display:inline-block;padding:12px 24px;border-radius:999px;font-weight:900;border:2px solid var(--hotpink);color:#000;background:var(--hotpink);transition:.25s}
+    .btn:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(255,46,147,.35)}
+
+    section{padding:96px 0}
+    section.alt{background:#121212}
+    .section-title{font-family:"Playfair Display",serif;font-size:clamp(28px,4.5vw,44px);text-align:center;margin:0 0 14px}
+    .section-sub{color:var(--muted);text-align:center;margin:0 auto 34px;max-width:880px}
+
+    .cards-5{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+    .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .cards-2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .card{background:var(--card);color:var(--card-ink);border-radius:16px;padding:22px;border:1px solid #efefef;box-shadow:0 8px 24px rgba(0,0,0,.22);min-height:260px}
+    .card h3{margin:0 0 8px;font-family:"Playfair Display",serif}
+    .card p{color:#333}
+    .ghost-btn{display:inline-block;padding:10px 18px;border-radius:999px;border:2px solid var(--hotpink);color:var(--hotpink);font-weight:800;margin-top:12px}
+
+    [data-reveal]{opacity:0;transform:translateY(42px);transition:opacity .8s ease, transform .8s ease}
+    [data-reveal].visible{opacity:1;transform:none}
+    .slide-left{transform:translateX(-42px)}
+    .slide-right{transform:translateX(42px)}
+    .zoom-in{transform:scale(1.05)}
+    .fade-bottom{transform:translateY(42px)}
+
+    .author{display:grid;grid-template-columns:360px 1fr;gap:24px;align-items:start}
+    .author .photo{border-radius:16px;overflow:hidden;box-shadow:var(--shadow);border:1px solid #1e1e1e;min-height:340px;position:relative}
+    .author .photo img{width:100%;height:100%;object-fit:cover;filter:grayscale(10%) brightness(.95)}
+    .author .photo::after{content:"";position:absolute;inset:0;background:radial-gradient(800px 300px at 15% 10%,rgba(255,46,147,.2),transparent 60%)}
+    .author .bio{background:#0f0f0f;border:1px solid #1d1d1d;border-radius:16px;padding:22px}
+    .author .bio p{color:#e0e0e0}
+    .check{display:flex;align-items:center;gap:10px;margin-top:6px}
+    .check:before{content:"";width:12px;height:12px;border-radius:50%;background:var(--hotpink)}
+
+    .faq details{background:#0f0f0f;border:1px solid #1d1d1d;border-radius:14px;padding:16px;color:#eaeaea}
+    .faq details+details{margin-top:12px}
+    .faq summary{cursor:pointer;font-weight:900}
+    .faq p{margin:.6em 0 0;color:#d2d2d2}
+
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    input,textarea{width:100%;padding:12px;border-radius:12px;border:1px solid #ddd}
+    label{font-weight:700}
+    footer{padding:40px 0;text-align:center;color:#a7a7a7;border-top:1px solid #1e1e1e}
+
+    @media(max-width:1100px){
+      .cards-5{grid-template-columns:repeat(3,1fr)}
+      .author{grid-template-columns:1fr}
+    }
+    @media(max-width:860px){
+      .cards-3{grid-template-columns:1fr}
+      .cards-2{grid-template-columns:1fr}
+    }
+    @media(max-width:680px){
+      .cards-5{grid-template-columns:repeat(2,1fr)}
+      header.nav .nav-inner{flex-wrap:wrap}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="#home">Home</a>
+      <a href="#conceito">O CONCEITO</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#como-funciona">como funciona</a>
+      <a href="#diagnostico">Diagnostico</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </header>
+
+  <section id="home" class="hero">
+    <video autoplay muted loop playsinline poster="https://cdn.superpower.com/media/anovaaliada_poster.jpg">
+      <source src="https://cdn.superpower.com/media/anovaaliada.webm" type="video/webm">
+      <source src="https://cdn.superpower.com/media/anovaaliada.mp4" type="video/mp4">
+    </video>
+    <div class="overlay" aria-hidden="true"></div>
+    <div class="content" data-reveal>
+      <h1>Descubra <br>a nova aliada</h1>
+      <p>O futuro do protagonismo feminino, movido por IA, conexão e autonomia inteligente.</p>
+      <a href="#conceito" class="btn">Converse com o livro</a>
+    </div>
+  </section>
+
+  <section id="conceito" class="alt">
+    <div class="container">
+      <h2 class="section-title" data-reveal>O Conceito</h2>
+      <div class="section-sub" data-reveal>É um conceito. Uma obra. Um ecossistema.</div>
+
+      <p data-reveal>No livro que tens nas mãos (ou que estás prestes a descobrir), A Nova Aliada é referenciada como a inteligência artificial — reposicionada como parceira estratégica para mulheres que lideram, criam e se reinventam, não como ameaça.</p>
+      <p data-reveal>Mas A Nova Aliada é também um ecossistema dedicado a mulheres que querem transformar autonomia inteligente em impacto global — onde nenhuma mulher precisa mais empreender sozinha.</p>
+      <p data-reveal>O ecossistema assenta em 5 pilares integrados: <strong>O Livro • A Comunidade • O Movimento • Humans • Bitrix24</strong></p>
+      <p data-reveal>Cada elemento não existe isoladamente — todos se retroalimentam.</p>
+      <p data-reveal><em>Leitura torna-se conexão. Conexão torna-se negócio. Negócio torna-se impacto.</em></p>
+    </div>
+  </section>
+
+  <section id="pilares">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Pilares</h2>
+      <div class="cards-5">
+        <div class="card" data-reveal style="transition-delay:.10s">
+          <h3>O Livro — O Manifesto</h3>
+          <p>Acesso ao best-seller que rompe mitos e abre portas para a tua revolução tecnológica.</p>
+          <a class="ghost-btn" href="#">Read more ...</a>
+        </div>
+        <div class="card" data-reveal style="transition-delay:.20s">
+          <h3>A Comunidade — Mentoria Viva</h3>
+          <p>Espaço exclusivo de colaboração entre pares, mentorias e casos práticos aplicados.</p>
+          <a class="ghost-btn" href="#">Read more ...</a>
+        </div>
+        <div class="card" data-reveal style="transition-delay:.30s">
+          <h3>O Movimento — Expansão Global</h3>
+          <p>Faz parte da bandeira pública de autonomia inteligente. Summits, eventos e rede internacional de embaixadoras.</p>
+          <a class="ghost-btn" href="#">Read more ...</a>
+        </div>
+        <div class="card" data-reveal style="transition-delay:.40s">
+          <h3>Humans — IA Aplicada</h3>
+          <p>Acesso às soluções práticas da startup: desde reconstrução de sites em 48h a automações personalizadas.</p>
+          <a class="ghost-btn" href="#">Read more ...</a>
+        </div>
+        <div class="card" data-reveal style="transition-delay:.50s">
+          <h3>Bitrix24 — Gestão Profissional</h3>
+          <p>O sistema nervoso central do teu negócio. CRM completo, automações e dashboards que transformam caos em clareza.</p>
+          <a class="ghost-btn" href="#">Read more ...</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-funciona" class="alt">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Como funciona</h2>
+      <div class="cards-3">
+        <div class="card slide-left" data-reveal>
+          <h3>Começa pela clareza</h3>
+          <p>Faz o diagnóstico gratuito e descobre exatamente onde estás — e para onde podes ir com autonomia inteligente.</p>
+        </div>
+        <div class="card zoom-in" data-reveal>
+          <h3>Entra no ecossistema vivo</h3>
+          <p>Acede aos 5 pilares integrados: Livro (manifesto), Comunidade (conexão), Movimento (expansão global), Humans (IA aplicada) e Bitrix24 (gestão/CRM). Tudo num só lugar.</p>
+        </div>
+        <div class="card slide-right" data-reveal>
+          <h3>Cresce sem limites</h3>
+          <p>Aplica, conecta, transforma. O ecossistema regenera-se contigo — cada pilar alimenta o outro, e todos te alimentam a ti.</p>
+        </div>
+      </div>
+
+      <div class="card" data-reveal style="margin-top:22px">
+        <h3>Comece sua Jornada</h3>
+        <p>Onde estás na tua jornada com IA?</p>
+        <ul>
+          <li>A tua liderança já tem as pistas.</li>
+          <li>As respostas para a sobrecarga, a dispersão ou a sensação de “estar sempre atrás” já estão aí — escondidas nas ferramentas que conheces (mas não usas) e nos padrões de trabalho que te esgotam.</li>
+          <li>Um diagnóstico preciso revela o estado exato da tua relação com a tecnologia — e o que fazer para a transformar.</li>
+          <li>Identifica as lacunas que te bloqueiam, mapeia o caminho que te liberta e descobre como ativar a tua autonomia inteligente.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="livro">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Sobre o Livro</h2>
+      <div class="card zoom-in" data-reveal>
+        <p><strong>A Nova Aliada: Como a inteligência artificial está ao serviço da mulher que lidera, cria e se reinventa"</strong></p>
+        <p>Lorena Mateus de Jesus apresenta uma abordagem revolucionária sobre como as mulheres podem transformar a inteligência artificial de ameaça em parceira estratégica. O livro surge da constatação alarmante de que, desde a popularização do ChatGPT, a produtividade masculina superou a feminina em 6,4%, ampliando a disparidade de género em 57,1%.</p>
+        <h3>O Conceito Central</h3>
+        <p>A obra redefine a relação com a IA, propondo uma mudança de mentalidade fundamental: em vez de competir com a tecnologia, as mulheres podem estabelecer uma aliança consciente que amplifica suas competências naturais - intuição estratégica, visão sistémica, liderança empática e capacidade de síntese.</p>
+        <h3>O Método A.L.I.A.D.A.</h3>
+        <ul>
+          <li><em>A</em>presentar o contexto</li>
+          <li><em>L</em>istar as exigências</li>
+          <li><em>I</em>ndicar as referências</li>
+          <li><em>A</em>tribuir as tarefas</li>
+          <li><em>D</em>estacar observações</li>
+          <li><em>A</em>presentar as regras finais</li>
+        </ul>
+        <h3>A Jornada de Transformação</h3>
+        <p>Estruturado em três partes - Descoberta, Liderança e Ação - o livro conduz a leitora desde o receio inicial até ao domínio estratégico da IA. Através de casos inspiradores de mulheres pioneiras em tecnologia e investigação, demonstra como a IA pode ser humanizada e direcionada para impacto social positivo.</p>
+        <h3>Para Quem é Este Livro</h3>
+        <p>Destinado a mulheres executivas, empreendedoras e líderes que buscam reinvenção profissional, o livro oferece ferramentas práticas para transformar a IA numa vantagem competitiva sustentável, sem renunciar à autenticidade e valores humanos.</p>
+        <p>O resultado é um guia completo que transforma receio em protagonismo, mostrando que o futuro não será definido por quem domina a tecnologia, mas por quem a utiliza conscientemente para amplificar o seu propósito e impacto no mundo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE A AUTORA -->
+  <section id="autora" class="alt">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Sobre a autora</h2>
+      <div class="author">
+        <div class="photo slide-left" data-reveal>
+          <img src="https://byhumans.pt/wp-content/uploads/2024/01/Lorenaprofile.jpeg" alt="Lorena Mateus de Jesus">
+        </div>
+        <div class="bio slide-right" data-reveal>
+          <p><strong>Lorena Mateus de Jesus</strong> é a autora de <em>A Nova Aliada</em>. A sua obra propõe uma aliança consciente com a inteligência artificial para amplificar autonomia, liderança e impacto feminino.</p>
+          <div class="check">IA aplicada à liderança e aos negócios</div>
+          <div class="check">Ecossistema com livro, comunidade, movimento e soluções</div>
+          <div class="check">Foco em autonomia inteligente e impacto global</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="comunidade">
+    <div class="container">
+      <h2 class="section-title" data-reveal>A comunidade</h2>
+      <div class="card" data-reveal>
+        <p>Ler o livro A Nova Aliada é o primeiro passo.
+        Entrar na comunidade é o momento em que a transformação acontece.</p>
+        <p>Cada reflexão, cada descoberta e cada insight do livro são apenas o início da tua jornada rumo à autonomia inteligente.</p>
+        <p>A comunidade é o coração vivo do ecossistema — o espaço onde conhecimento se transforma em ação, tecnologia em liberdade e liderança em colaboração.</p>
+        <p>Porque nenhuma mulher precisa mais empreender sozinha.</p>
+        <p>A tua nova aliada já te espera — e é hora de ativá-la.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="metodo" class="alt">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Método A.L.I.A.D.A</h2>
+      <div class="card zoom-in" data-reveal>
+        <p>O Método A.L.I.A.D.A. é o sistema de 6 passos que revoluciona a forma como comunicas com inteligência artificial, transformando pedidos vagos em colaborações estratégicas de alto impacto.</p>
+        <ul>
+          <li>Converte interações casuais em parcerias estratégicas</li>
+          <li>Multiplica a eficiência das tuas solicitações de IA</li>
+          <li>Garante resultados personalizados e alinhados aos teus objetivos</li>
+          <li>Elimina o retrabalho e otimiza cada colaboração</li>
+        </ul>
+        <p><em>Da experimentação à maestria:</em> enquanto outras ficam perdidas entre tentativas e erros, tu dominas uma abordagem sistemática que gera resultados consistentes desde a primeira aplicação.</p>
+        <p>O livro apresenta os fundamentos. A implementação completa, com templates personalizados e acompanhamento prático, está disponível na nossa comunidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="protocolo">
+    <div class="container">
+      <h2 class="section-title" data-reveal>Protocolo A Nova Aliada</h2>
+      <div class="card zoom-in" data-reveal>
+        <p><strong>As 10 competências para liderança consciente na era digital</strong></p>
+        <p>O Protocolo A Nova Aliada é o roteiro avançado que sustenta a tua transformação a longo prazo, integrando desenvolvimento pessoal, liderança ética e parceria estratégica com IA.</p>
+        <p><strong>As 10 competências do protocolo N.O.V.A. A.L.I.A.D.A.:</strong></p>
+        <ul>
+          <li>Nutrição de relacionamentos e Otimização física</li>
+          <li>Vivências exploratórias e Abertura criativa</li>
+          <li>Aprendizagem contínua e Liderança humilde</li>
+          <li>Inteligência relacional e Ação intencional</li>
+          <li>Desenvolvimento sistémico e Autenticidade corajosa</li>
+        </ul>
+        <p><em>Sustentabilidade na transformação:</em> este protocolo garante que o teu crescimento não seja pontual, mas uma evolução consciente e duradoura que te posiciona como arquiteta do futuro digital.</p>
+        <p>O livro introduz os conceitos. A implementação personalizada, com planos de ação individualizados, acontece através de formatos exclusivos disponíveis na nossa comunidade.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="kpis" class="alt">
+    <div class="container">
+      <div class="card" data-reveal>
+        <blockquote style="margin:0;font-size:1.1rem">
+          "O Hub A Nova Aliada deu-me o que nenhuma agência ou freelancer jamais conseguiu: um site profissional com CRM integrado em 3 dias. Se precisas de soluções rápidas para conectar o teu negócio ao mercado internacional, esta é a solução."
+        </blockquote>
+        <p style="margin-top:8px"><strong>Mara Adeodato</strong>, Linkup International</p>
+      </div>
+      <div class="cards-3" style="margin-top:18px">
+        <div class="card" data-reveal><div style="font-weight:900;font-size:36px;color:var(--hotpink)">03 dias</div><p>para transformar completamente um negócio feminino</p></div>
+        <div class="card" data-reveal><div style="font-weight:900;font-size:36px;color:var(--hotpink)">24 embaixadoras</div><p>fundadoras de 4 países a construir o movimento global</p></div>
+        <div class="card" data-reveal><div style="font-weight:900;font-size:36px;color:var(--hotpink)">100+ ferramentas</div><p>de IA curadas e prontas a usar no ecossistema</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container faq">
+      <h2 class="section-title" data-reveal>FAQ</h2>
+      <details class="fade-bottom" data-reveal><summary>O que é A Nova Aliada?</summary><p>É um ecossistema vivo que integra livro, comunidade, movimento global, soluções tecnológicas e gestão com Bitrix24 — para acelerar a autonomia e o impacto das mulheres líderes.</p></details>
+      <details class="fade-bottom" data-reveal><summary>Como posso fazer parte?</summary><p>Podes começar pelo livro, juntar-te à comunidade ou realizar o diagnóstico gratuito que te mostra onde estás na tua jornada com IA.</p></details>
+      <details class="fade-bottom" data-reveal><summary>Preciso de ser especialista em tecnologia?</summary><p>Não. O ecossistema foi desenhado para todos os níveis — do início ao domínio estratégico — com ferramentas práticas e mentoria viva.</p></details>
+      <details class="fade-bottom" data-reveal><summary>O que é o Método A.L.I.A.D.A.?</summary><p>É uma metodologia exclusiva de 6 passos para transformar conversas com IA em colaborações produtivas e alinhadas ao teu objetivo.</p></details>
+      <details class="fade-bottom" data-reveal><summary>Como funciona o ecossistema?</summary><p>Cada pilar alimenta o outro: conhecimento gera conexão, conexão gera impacto e impacto amplia o movimento.</p></details>
+      <details class="fade-bottom" data-reveal><summary>O que ganho ao entrar?</summary><p>Acesso ao manifesto, comunidade, eventos, soluções práticas e à rede global de embaixadoras — um espaço onde nenhuma mulher precisa empreender sozinha.</p></details>
+    </div>
+  </section>
+
+  <section id="contato" class="alt">
+    <div class="container contact">
+      <div class="card" data-reveal>
+        <h2 class="section-title" style="margin:0 0 10px">Fale com o suporte</h2>
+        <p><a href="https://bx24.bitrix24.eu/online/novaliadasuporte" target="_blank" rel="noopener">https://bx24.bitrix24.eu/online/novaliadasuporte</a></p>
+        <p>RUA DE GONDAREM, 457, 4o andar</p>
+        <p><a href="tel:+551131995269">+55 11 3199-5269</a></p>
+        <p><a href="mailto:comercial@byhumans.pt">Email: comercial@byhumans.pt</a></p>
+      </div>
+      <form class="card" data-reveal onsubmit="event.preventDefault();alert('Mensagem enviada. Obrigado!');">
+        <h3 style="margin-top:0">Envia-nos uma mensagem</h3>
+        <div class="cards-2" style="gap:12px">
+          <div><label>Nome<br><input required></label></div>
+          <div><label>Email<br><input type="email" required></label></div>
+          <div style="grid-column:1/-1"><label>Mensagem<br><textarea rows="5" required></textarea></label></div>
+        </div>
+        <div style="margin-top:12px"><button class="btn" type="submit">Enviar</button></div>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">© <span id="year"></span> A Nova Aliada — Todos os direitos reservados.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const observer=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+    },{threshold:0.16});
+    document.querySelectorAll('[data-reveal]').forEach(el=>observer.observe(el));
+  </script>
+</body>
+</html>
